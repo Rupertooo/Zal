@@ -38,6 +38,42 @@ public class Pracownik {
         return toRet;
     }
 
+    public void wyswietlanie() {
+        //       System.out.println("Imie\tNazwisko\tPłeć\tNrDziału\tPłaca\tIlość dzieci\tStan Cywilny");
+        System.out.print(getImie() + "\t" + getNazwisko() + "\t\t" + getPlec() + "\t" + getNrDzialu() + "\t\t" + getPlaca() + "\t" + getDzieci() + "\t\t" + isStanCywilny());
+        //       sprawdzanieStatusu(getPlec(), isStanCywilny());
+    }
+
+    public void wyswietlanieOkrojone() {
+        //  System.out.println("Imie\tNazwisko\tPłaca");
+        //      for (Pracownik a : listaPracownikow) {
+        System.out.println(getImie() + "\t" + getNazwisko() + "\t\t" + getPlaca());
+        //     
+    }
+
+    public void wyswietlanieSpecjalne() {
+   //     System.out.println("IMIĘ\tNAZWISKO");
+        //       for (Pracownik a : listaPracownikow) {
+        System.out.println(getImie().toUpperCase() + "\t" + getNazwisko().toUpperCase());
+        //      }
+    }
+    
+    public boolean sprawdzaniePensji(float ile) {
+        if (ile > placa) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public float podwyzka(float oIle) {
+        float tmp;
+        tmp = oIle + 2 * dzieci;
+        if(stanCywilny) tmp = tmp+3;
+        tmp = placa*(tmp/100);
+        return tmp;
+    }
+
     public String getImie() {
         return imie;
     }
