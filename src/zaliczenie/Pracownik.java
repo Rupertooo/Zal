@@ -27,9 +27,15 @@ public class Pracownik {
     }
 
     private String stringFormat(String tekst) {
+        String[] tabTmp = tekst.split("\\s+");
+        tekst = "";
+        for (String tabTmp1 : tabTmp) {
+            tekst = tekst + tabTmp1;
+        }
         String tmp = tekst.substring(0, 1);
         String tmp2 = tekst.substring(1);
-        return (tmp.toUpperCase() + tmp2.toLowerCase());
+        String toRet = tmp.toUpperCase() + tmp2.toLowerCase();
+        return toRet;
     }
 
     public String getImie() {
