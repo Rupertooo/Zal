@@ -25,4 +25,26 @@ public class Menu {
 
         return w;
     }
+
+    public Pracownik dodawniePrac() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Podaj Imię");
+        String imie = in.nextLine();
+        System.out.println("Podaj Nazwisko");
+        String nazwisko = in.nextLine();
+        System.out.println("Podaj płeć");
+        char plec = in.nextLine().charAt(0);
+        System.out.println("Podaj numer działu");
+        int nrDzialu = in.nextInt();
+        System.out.println("Podaj płace");
+        float placa = in.nextFloat();
+        System.out.println("Podaj wiek");
+        int wiek = in.nextInt();
+        System.out.println("Podaj ilość dzieci");
+        int dzieci = in.nextInt();
+        System.out.println("Podaj stan cywilny true/false");
+        boolean stanCywilny = in.nextBoolean();
+        return new Pracownik(imie,nazwisko, plec, nrDzialu, placa, wiek, dzieci, stanCywilny);
+    }
+
 }
