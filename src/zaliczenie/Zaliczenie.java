@@ -17,26 +17,21 @@ public class Zaliczenie {
                 case 1:
                     p.wyswietlPracownikow();
                     break;
-                case 2:                    
+                case 2:
                     p.dodajPracownika(men.dodawniePrac());
                     break;
-
                 case 3:
 
                     break;
-
                 case 4:
-
+                    p.usunPracownika();
                     break;
-
                 case 5:
-
+                    p.edycjaPracownika();
                     break;
-
                 case 6:
 
                     break;
-
                 default:
                     System.out.println("Wybrano złą opcje");
 

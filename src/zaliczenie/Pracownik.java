@@ -40,7 +40,7 @@ public class Pracownik {
 
     public void wyswietlanie() {
         //       System.out.println("Imie\tNazwisko\tPłeć\tNrDziału\tPłaca\tIlość dzieci\tStan Cywilny");
-        System.out.print(getImie() + "\t" + getNazwisko() + "\t\t" + getPlec() + "\t" + getNrDzialu() + "\t\t" + getPlaca() + "\t" + getDzieci() + "\t\t" + isStanCywilny());
+        System.out.print(getImie() + "\t" + getNazwisko() + "\t\t" + getPlec() + "\t" + getNrDzialu() + "\t\t" + getPlaca() + "\t" + getDzieci() + "\t\t");
         //       sprawdzanieStatusu(getPlec(), isStanCywilny());
     }
 
