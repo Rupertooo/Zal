@@ -1,5 +1,9 @@
 package zaliczenie;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -62,7 +66,7 @@ public class Lista {
         }
         System.out.println("Którego pracownika chcesz edytować?");
         Scanner in = new Scanner(System.in);
-        int kogo = in.nextInt();
+        int kogo = Integer.parseInt(in.nextLine());
         licznik = 1;
         for (Pracownik p : listaPracownikow) {
             if (licznik == kogo) {
@@ -72,8 +76,8 @@ public class Lista {
                     int co = Menu.menuEdycjaKobieta();
                     switch (co) {
                         case 1:
-                            System.out.print("Podaj nowe nazwisko.");
-                            String tmp = in.nextLine(); //coś tutaj się krzaczy
+                            System.out.println("Podaj nowe nazwisko.");
+                            String tmp = in.nextLine();
                             p.setNazwisko(tmp);
                             break;
                         case 2:
@@ -148,10 +152,74 @@ public class Lista {
     public int obliczniePracownikow(float pensja) {
         int licznik = 0;
         for (Pracownik a : listaPracownikow) {
-            if(a.getPlaca()>pensja) {
+            if (a.getPlaca() > pensja) {
                 licznik++;
             }
         }
         return licznik;
+    }
+
+    public void eksport(String nazwaPliku) {
+        try {
+            File oF = new File(nazwaPliku);
+            FileWriter fW = new FileWriter(oF);
+            PrintWriter pW = new PrintWriter(fW);
+            for (Pracownik p : listaPracownikow) {
+                pW.println(p.getImie() + "," + p.getNazwisko() + "," + p.getPlec() + "," + p.getNrDzialu() + "," + p.getPlaca() + "," + p.getWiek() + "," + p.getDzieci());
+            }
+            pW.flush();
+            pW.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+    public float sredniaDzialu(int nrDzialu) { //Zwraca średnia podanego działu 0 jeśli ilość osób w dziale jest równa 0
+        int licznik = 0;
+        float suma = 0;
+        for (Pracownik p : listaPracownikow) {
+            if (p.getNrDzialu() == nrDzialu) {
+                licznik++;
+                suma = suma + p.getPlaca();
+            }
+        }
+        if (licznik == 0) {
+            return 0;
+        } else {
+            return suma / licznik;
+        }
+    }
+
+    public void najwiekszePlace() { //Wyświetlanie najwyższej pensji kobiety i meżczyzny
+        float najwiekszaKobieta = Float.MIN_VALUE;
+        float najwiekszaMez = Float.MIN_VALUE;
+        for (Pracownik p : listaPracownikow) {
+            if (p.getPlec() == 'K') {
+                najwiekszaKobieta = Float.max(najwiekszaKobieta, p.getPlaca());
+            } else {
+                najwiekszaMez = Float.max(najwiekszaMez, p.getPlaca());
+            }
+        }
+        System.out.println("Najwyższa płaca Kobiety : " + najwiekszaKobieta + " Mężczyzny : " + najwiekszaMez);
+    }
+
+    public void stosunekPensji() {
+        float sredniaKobiet = 0;
+        float sredniaMez = 0;
+        for (Pracownik p : listaPracownikow) {
+            if (p.getPlec() == 'K') {
+                sredniaKobiet+=p.getPlaca();
+            } else {
+                sredniaMez+=p.getPlaca();
+            }
+        }
+        System.out.println("Stosunek sredniej pensji kobiet do mężczyzn "+(sredniaKobiet/sredniaMez));
+    }
+    
+    public void zwiekszPensje() {
+        for(Pracownik p : listaPracownikow) {
+            p.setPlaca(p.getPlaca()+p.podwyzka(10));
+        }
     }
 }
