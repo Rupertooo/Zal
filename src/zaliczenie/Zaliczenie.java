@@ -1,7 +1,6 @@
 package zaliczenie;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Zaliczenie {
 
@@ -30,7 +29,23 @@ public class Zaliczenie {
                     p.edycjaPracownika();
                     break;
                 case 6:
+                    int wybor2 = Menu.menuDodatkowe();
+                    switch (wybor2) {
+                        case 1: 
+                            System.out.println(p.obliczniePracownikow(men.jakaPensja()) + " pracowników ma wyższą pensję");
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:                            
+                            break;
+                        case 5:                            
+                            break;
+                        default:
+                            System.out.println("Wybrano złą opcje");
 
+                    }
                     break;
                 default:
                     System.out.println("Wybrano złą opcje");

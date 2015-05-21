@@ -144,4 +144,14 @@ public class Lista {
             }
         }
     }
+
+    public int obliczniePracownikow(float pensja) {
+        int licznik = 0;
+        for (Pracownik a : listaPracownikow) {
+            if(a.getPlaca()>pensja) {
+                licznik++;
+            }
+        }
+        return licznik;
+    }
 }

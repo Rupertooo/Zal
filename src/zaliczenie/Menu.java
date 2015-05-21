@@ -95,5 +95,12 @@ public class Menu {
         boolean stanCywilny = in.nextBoolean();
         return new Pracownik(imie, nazwisko, plec, nrDzialu, placa, wiek, dzieci, stanCywilny);
     }
+    
+    public float jakaPensja() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Podaj pensję");
+        float pensja = in.nextFloat();
+        return pensja;
+    }
 
 }
