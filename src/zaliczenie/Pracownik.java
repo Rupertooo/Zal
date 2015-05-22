@@ -40,11 +40,11 @@ public class Pracownik {
     }
 
     public void wyswietlanie() {
-        System.out.print(getImie() + "\t" + getNazwisko() + "\t" + getPlec() + "\t" + getNrDzialu() + "\t\t" + getPlaca() + "\t" + getDzieci() + "\t\t");
+        System.out.print(getImie() + "\t" + getNazwisko() + "\t " + getPlec() + "\t" + getNrDzialu() + "\t" + getPlaca() + "\t" + getDzieci() + "\t\t");
     }
 
     public void wyswietlanieOkrojone() {
-        System.out.println(getImie() + "\t" + getNazwisko() + "\t" + getPlaca());    
+        System.out.println(getImie() + "\t" + getNazwisko() + "\t\t" + getPlaca());    
     }
 
     public void wyswietlanieSpecjalne() {

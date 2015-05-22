@@ -48,7 +48,6 @@ public class Zaliczenie {
                             break;
                         default:
                             System.out.println("Wybrano złą opcje");
-
                     }
                     break;
                 default:
