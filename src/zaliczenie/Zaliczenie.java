@@ -1,7 +1,6 @@
 package zaliczenie;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Zaliczenie {
 
@@ -11,18 +10,17 @@ public class Zaliczenie {
         p.dodajPracownika("Marcin", "Cogiel", 'M', 5, 2000, 26, 0, false);
         p.dodajPracownika("Marcin", "Cogiel", 'K', 5, 2000, 26, 0, false);
         int wybor;
-        Menu men = new Menu();
-        wybor = men.menu();
+        wybor = Menu.menu();
         while (wybor != 0) {
             switch (wybor) {
                 case 1:
                     p.wyswietlPracownikow();
                     break;
                 case 2:
-                    p.dodajPracownika(men.dodawniePrac());
+                    p.dodajPracownika(Menu.dodawniePrac());
                     break;
                 case 3:
-                    p.eksport("test.txt");
+                    p.eksport(Menu.jakiPlik());
                     break;
                 case 4:
                     p.usunPracownika();
@@ -34,21 +32,19 @@ public class Zaliczenie {
                     int wybor2 = Menu.menuDodatkowe();
                     switch (wybor2) {
                         case 1:
-                            System.out.println(p.obliczniePracownikow(men.jakaPensja()) + " pracowników ma wyższą pensję");
+                            System.out.println(p.obliczniePracownikow(Menu.jakiPlik(),Menu.jakaPensja()) + " pracowników ma wyższą pensję");
                             break;
-                        case 2:
-                            Scanner in = new Scanner(System.in);
-                            System.out.println("Którego działu?");                            
-                            System.out.println(p.sredniaDzialu(in.nextInt()));
+                        case 2:                          
+                            System.out.println(p.sredniaDzialu(Menu.jakiPlik(),Menu.jakiDzial()));
                             break;
                         case 3:
-                            p.najwiekszePlace();
+                            p.najwiekszePlace(Menu.jakiPlik());
                             break;
                         case 4:
-                            p.stosunekPensji();
+                            p.stosunekPensji(Menu.jakiPlik());
                             break;
                         case 5:
-                            p.zwiekszPensje();
+                            p.zwiekszPensje(Menu.jakiPlik());
                             break;
                         default:
                             System.out.println("Wybrano złą opcje");
@@ -65,14 +61,6 @@ public class Zaliczenie {
 
             wybor = Menu.menu();
         }
-        /*        Pracownik p1 = new Pracownik("Michał", "Cogiel", 'M', 5, 3000, 25, 0, false);
-         p1.podwyzka(5);
-         Lista p = new Lista();
-         p.dodajPracownika("Michał", "Cogiel", 'M', 5, 3000, 25, 0, false);
-         p.dodajPracownika("Marcin", "Cogiel", 'M', 5, 2000, 26, 0, false);
-         p.wyswietlanie();
-         p.wyswietlanieOkrojone();
-         p.wyswietlanieSpecjalne();*/
     }
 
 }

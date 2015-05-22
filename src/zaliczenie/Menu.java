@@ -28,12 +28,12 @@ public class Menu {
 
     public static int menuDodatkowe() {
         System.out.println("     ****************************************");
-        System.out.println("     *                 MENU                 *");
+        System.out.println("     *             MENU DODATKOWE           *");
         System.out.println("     ****************************************");
         System.out.println("     1. Oblicznie pracowników z pensją wyższą");
         System.out.println("     2. Oblicznie sredniej płacy w dziale");
         System.out.println("     3. Wyświetlanie największych pensji kobiet i mężczyzn");
-        System.out.println("     4. Średnia płaca kobier do średniej płacy mężczyzn");
+        System.out.println("     4. Średnia płaca kobiet do średniej płacy mężczyzn");
         System.out.println("     5. Podwyższka o 10%");
 
         Scanner in = new Scanner(System.in);
@@ -44,7 +44,7 @@ public class Menu {
 
     public static int menuEdycjaKobieta() {
         System.out.println("     ****************************************");
-        System.out.println("     *                 MENU                 *");
+        System.out.println("     *              MENU EDYCJI             *");
         System.out.println("     ****************************************");
         System.out.println("     1. Nazwisko");
         System.out.println("     2. Numer działu");
@@ -61,7 +61,7 @@ public class Menu {
 
     public static int menuEdycjaMezczyna() {
         System.out.println("     ****************************************");
-        System.out.println("     *                 MENU                 *");
+        System.out.println("     *              MENU EDYCJI             *");
         System.out.println("     ****************************************");
         System.out.println("     1. Numer działu");
         System.out.println("     2. Płaca");
@@ -75,7 +75,7 @@ public class Menu {
         return w;
     }
 
-    public Pracownik dodawniePrac() {
+    public static Pracownik dodawniePrac() {
         Scanner in = new Scanner(System.in);
         System.out.println("Podaj Imię");
         String imie = in.nextLine();
@@ -95,12 +95,26 @@ public class Menu {
         boolean stanCywilny = in.nextBoolean();
         return new Pracownik(imie, nazwisko, plec, nrDzialu, placa, wiek, dzieci, stanCywilny);
     }
-    
-    public float jakaPensja() {
+
+    public static float jakaPensja() {
         Scanner in = new Scanner(System.in);
         System.out.println("Podaj pensję");
         float pensja = in.nextFloat();
         return pensja;
+    }
+
+    public static int jakiDzial() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Podaj numer dzialu");
+        int nrDzialu = in.nextInt();
+        return nrDzialu;
+    }
+
+    public static String jakiPlik() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Podaj nazwe pliku");
+        String plik = in.nextLine();
+        return plik;
     }
 
 }

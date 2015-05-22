@@ -32,6 +32,7 @@ public class Pracownik {
         for (String tabTmp1 : tabTmp) {
             tekst = tekst + tabTmp1;
         }
+        tekst = tekst.trim();
         String tmp = tekst.substring(0, 1);
         String tmp2 = tekst.substring(1);
         String toRet = tmp.toUpperCase() + tmp2.toLowerCase();

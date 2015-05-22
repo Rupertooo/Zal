@@ -1,6 +1,8 @@
 package zaliczenie;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -149,7 +151,8 @@ public class Lista {
         }
     }
 
-    public int obliczniePracownikow(float pensja) {
+    public int obliczniePracownikow(String inputFile, float pensja) {
+        ArrayList<Pracownik> listaPracownikow = odczytZPliku(inputFile);
         int licznik = 0;
         for (Pracownik a : listaPracownikow) {
             if (a.getPlaca() > pensja) {
@@ -159,13 +162,32 @@ public class Lista {
         return licznik;
     }
 
+    private ArrayList odczytZPliku(String inputFile) {
+        try {
+            File iF = new File(inputFile);
+            FileReader fR = new FileReader(iF);
+            BufferedReader bR = new BufferedReader(fR);
+            String odczyt;
+            String[] wynik;
+            ArrayList<Pracownik> listaPracownikow = new ArrayList();
+            while ((odczyt = bR.readLine()) != null) {
+                wynik = odczyt.split(",");
+                listaPracownikow.add(new Pracownik(wynik[0], wynik[1], wynik[2].charAt(0), Integer.parseInt(wynik[3]), Float.parseFloat(wynik[4]), Integer.parseInt(wynik[6]), Integer.parseInt(wynik[5]), Boolean.parseBoolean(wynik[7])));
+            }
+            return listaPracownikow;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
     public void eksport(String nazwaPliku) {
         try {
             File oF = new File(nazwaPliku);
             FileWriter fW = new FileWriter(oF);
             PrintWriter pW = new PrintWriter(fW);
             for (Pracownik p : listaPracownikow) {
-                pW.println(p.getImie() + "," + p.getNazwisko() + "," + p.getPlec() + "," + p.getNrDzialu() + "," + p.getPlaca() + "," + p.getWiek() + "," + p.getDzieci());
+                pW.println(p.getImie() + "," + p.getNazwisko() + "," + p.getPlec() + "," + p.getNrDzialu() + "," + p.getPlaca() + "," + p.getWiek() + "," + p.getDzieci() + "," + p.isStanCywilny());
             }
             pW.flush();
             pW.close();
@@ -175,7 +197,8 @@ public class Lista {
 
     }
 
-    public float sredniaDzialu(int nrDzialu) { //Zwraca średnia podanego działu 0 jeśli ilość osób w dziale jest równa 0
+    public float sredniaDzialu(String inputFile, int nrDzialu) { //Zwraca średnia podanego działu 0 jeśli ilość osób w dziale jest równa 0
+        ArrayList<Pracownik> listaPracownikow = odczytZPliku(inputFile);
         int licznik = 0;
         float suma = 0;
         for (Pracownik p : listaPracownikow) {
@@ -191,7 +214,8 @@ public class Lista {
         }
     }
 
-    public void najwiekszePlace() { //Wyświetlanie najwyższej pensji kobiety i meżczyzny
+    public void najwiekszePlace(String inputFile) { //Wyświetlanie najwyższej pensji kobiety i meżczyzny
+        ArrayList<Pracownik> listaPracownikow = odczytZPliku(inputFile);
         float najwiekszaKobieta = Float.MIN_VALUE;
         float najwiekszaMez = Float.MIN_VALUE;
         for (Pracownik p : listaPracownikow) {
@@ -204,22 +228,28 @@ public class Lista {
         System.out.println("Najwyższa płaca Kobiety : " + najwiekszaKobieta + " Mężczyzny : " + najwiekszaMez);
     }
 
-    public void stosunekPensji() {
+    public void stosunekPensji(String inputFile) {
+        ArrayList<Pracownik> listaPracownikow = odczytZPliku(inputFile);
         float sredniaKobiet = 0;
+        int licznikKobiet = 0;
         float sredniaMez = 0;
+        int licznikMez = 0;
         for (Pracownik p : listaPracownikow) {
             if (p.getPlec() == 'K') {
-                sredniaKobiet+=p.getPlaca();
+                sredniaKobiet += p.getPlaca();
+                licznikKobiet++;
             } else {
-                sredniaMez+=p.getPlaca();
+                sredniaMez += p.getPlaca();
+                licznikMez++;
             }
         }
-        System.out.println("Stosunek sredniej pensji kobiet do mężczyzn "+(sredniaKobiet/sredniaMez));
+        System.out.println("Stosunek sredniej pensji kobiet do mężczyzn " + ((sredniaKobiet/licznikKobiet) / (sredniaMez/licznikMez)));
     }
-    
-    public void zwiekszPensje() {
-        for(Pracownik p : listaPracownikow) {
-            p.setPlaca(p.getPlaca()+p.podwyzka(10));
+
+    public void zwiekszPensje(String inputFile) {
+        ArrayList<Pracownik> listaPracownikow = odczytZPliku(inputFile);
+        for (Pracownik p : listaPracownikow) {
+            p.setPlaca(p.getPlaca() + p.podwyzka(10));
         }
     }
 }
