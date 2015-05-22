@@ -75,6 +75,21 @@ public class Menu {
         return w;
     }
 
+    private static char sprawdzaniePlci(char plec) {
+        Scanner in = new Scanner(System.in);
+        if (plec == 'K' || plec == 'M') {
+        } else {
+            while (true) {
+                System.out.println("Podaj płeć jako K albo M");
+                plec = in.nextLine().charAt(0);
+                if (plec == 'K' || plec == 'M') {
+                    return plec;
+                }
+            }
+        }
+        return plec;
+    }
+
     public static Pracownik dodawniePrac() {
         Scanner in = new Scanner(System.in);
         System.out.println("Podaj Imię");
@@ -82,18 +97,22 @@ public class Menu {
         System.out.println("Podaj Nazwisko");
         String nazwisko = in.nextLine();
         System.out.println("Podaj płeć");
-        char plec = in.nextLine().charAt(0);
-        System.out.println("Podaj numer działu");
-        int nrDzialu = in.nextInt();
-        System.out.println("Podaj płace");
-        float placa = in.nextFloat();
-        System.out.println("Podaj wiek");
-        int wiek = in.nextInt();
-        System.out.println("Podaj ilość dzieci");
-        int dzieci = in.nextInt();
-        System.out.println("Podaj stan cywilny true/false");
-        boolean stanCywilny = in.nextBoolean();
-        return new Pracownik(imie, nazwisko, plec, nrDzialu, placa, wiek, dzieci, stanCywilny);
+        char plec = sprawdzaniePlci(in.nextLine().charAt(0));
+        try {
+            System.out.println("Podaj numer działu");
+            int nrDzialu = in.nextInt();
+            System.out.println("Podaj płace");
+            float placa = in.nextFloat();
+            System.out.println("Podaj wiek");
+            int wiek = in.nextInt();
+            System.out.println("Podaj ilość dzieci");
+            int dzieci = in.nextInt();
+            System.out.println("Podaj stan cywilny true/false");
+            boolean stanCywilny = in.nextBoolean();
+            return new Pracownik(imie, nazwisko, plec, nrDzialu, placa, wiek, dzieci, stanCywilny);
+        } catch (Exception ex) {
+            throw new IllegalStateException("Podałeś złe dane :<");
+        }
     }
 
     public static float jakaPensja() {

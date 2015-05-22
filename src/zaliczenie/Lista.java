@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -35,7 +35,7 @@ public class Lista {
     }
 
     public void usunPracownika() {
-        System.out.println("LP.\tImie\tNazwisko\tPłeć\tNrDziału\tPłaca\tIlość dzieci\tStan Cywilny");
+        System.out.println("LP.\tImie\tNazwisko\t\tPłeć\tNrDziału\tPłaca\tIlość dzieci\tStan Cywilny");
         int licznik = 1;
         for (Pracownik p : listaPracownikow) {
             System.out.print(licznik++ + ". \t");
@@ -59,7 +59,7 @@ public class Lista {
     }
 
     public void edycjaPracownika() {
-        System.out.println("LP.\tImie\tNazwisko\tPłeć\tNrDziału\tPłaca\tIlość dzieci\tStan Cywilny");
+        System.out.println("LP.\tImie\tNazwisko\t\tPłeć\tNrDziału\tPłaca\tIlość dzieci\tStan Cywilny");
         int licznik = 1;
         for (Pracownik p : listaPracownikow) {
             System.out.print(licznik++ + ". \t");

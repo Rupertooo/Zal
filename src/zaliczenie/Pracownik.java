@@ -40,23 +40,15 @@ public class Pracownik {
     }
 
     public void wyswietlanie() {
-        //       System.out.println("Imie\tNazwisko\tPłeć\tNrDziału\tPłaca\tIlość dzieci\tStan Cywilny");
-        System.out.print(getImie() + "\t" + getNazwisko() + "\t\t" + getPlec() + "\t" + getNrDzialu() + "\t\t" + getPlaca() + "\t" + getDzieci() + "\t\t");
-        //       sprawdzanieStatusu(getPlec(), isStanCywilny());
+        System.out.print(getImie() + "\t" + getNazwisko() + "\t" + getPlec() + "\t" + getNrDzialu() + "\t\t" + getPlaca() + "\t" + getDzieci() + "\t\t");
     }
 
     public void wyswietlanieOkrojone() {
-        //  System.out.println("Imie\tNazwisko\tPłaca");
-        //      for (Pracownik a : listaPracownikow) {
-        System.out.println(getImie() + "\t" + getNazwisko() + "\t\t" + getPlaca());
-        //     
+        System.out.println(getImie() + "\t" + getNazwisko() + "\t" + getPlaca());    
     }
 
     public void wyswietlanieSpecjalne() {
-   //     System.out.println("IMIĘ\tNAZWISKO");
-        //       for (Pracownik a : listaPracownikow) {
         System.out.println(getImie().toUpperCase() + "\t" + getNazwisko().toUpperCase());
-        //      }
     }
     
     public boolean sprawdzaniePensji(float ile) {
