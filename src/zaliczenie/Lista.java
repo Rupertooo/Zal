@@ -251,5 +251,6 @@ public class Lista {
         for (Pracownik p : listaPracownikow) {
             p.setPlaca(p.getPlaca() + p.podwyzka(10));
         }
+        this.listaPracownikow = listaPracownikow;
     }
 }
